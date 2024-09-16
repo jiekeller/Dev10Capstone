@@ -36,7 +36,7 @@ Users: Users/Admin allowing CRUD operations for stories and authors.
 
 ## High Level Requirements
 
-Use NLP Tools/View Stories (No Login Required)
+Browse Learning Pages / Use NLP Tools / View Stories (No Login Required)
 
 Add a Story (User, Admin)
 
@@ -52,9 +52,13 @@ Delete an Author (Admin)
 
 ## User Stories
 
+Browse Learning Pages
+
+As a casual user, anyone can view the learning pages on my website to learn the concepts of NLP.
+
 Use NLP Tools/View Stories 
 
-Use checkboxes and text boxes in the browser to experiment with NLP results.
+As a casual user, anyone can use checkboxes and text boxes in the tools/stories pages to experiment with NLP results.
 
 Add a Story
 
