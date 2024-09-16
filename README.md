@@ -124,3 +124,9 @@ Postcondition: Author must exist.
 ## Additional Comments
 
 I would plan to not have an option to “create a new user/admin” on the website. Instead for this website I am imagining a contact us/apply for new user form (stretch goal?)
+
+## Resources
+
+Use the link below to download the pre-trained Word2Vec model.
+
+https://www.kaggle.com/datasets/adarshsng/googlenewsvectors?resource=download
