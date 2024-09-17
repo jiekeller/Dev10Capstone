@@ -12,6 +12,7 @@ public class CoreNLPSentimentNERExample {
     public static void main(String[] args) {
         // Create a StanfordCoreNLP object with POS, NER, parse, sentiment annotators
         Properties props = new Properties();
+        props.setProperty("ner.useSUTime", "0");
         props.setProperty("annotators", "tokenize,ssplit,pos,lemma,ner,parse,sentiment");
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 
