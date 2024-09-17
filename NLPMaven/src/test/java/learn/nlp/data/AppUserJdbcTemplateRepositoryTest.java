@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
@@ -40,10 +40,30 @@ public class AppUserJdbcTemplateRepositoryTest {
     }
 
     @Test
+    void shouldNotFindByUsername() {
+        AppUser user = repository.findByUsername("blank");
+        assertNull(user);
+    }
+
+    @Test
     void shouldCreate() {
         AppUser user = new AppUser(3, "admin", "password", true, new ArrayList<>());
         user = repository.create(user);
         assertNotNull(user);
     }
+
+    @Test
+    void shouldUpdate() {
+        AppUser user = repository.findByUsername("john@smith.com");
+        user.setEnabled(false);
+        assertTrue(repository.update(user));
+    }
+
+    @Test
+    void shouldNotUpdate() {
+        AppUser user = new AppUser(1000, "admin", "password", true, new ArrayList<>());
+        assertFalse(repository.update(user));
+    }
+
 
 }
