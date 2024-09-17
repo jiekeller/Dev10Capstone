@@ -22,9 +22,9 @@ public class StoryMapper implements RowMapper<Story> {
         story.setId(rs.getInt("story_id"));
         story.setTitle(rs.getString("title"));
         story.setAuthor(author);
-        story.setPublishedDate(rs.getDate("publishedDate").toLocalDate());
+        story.setPublishedDate(rs.getString("publishedDate"));
         story.setText(rs.getString("text"));
-        story.setDescription(rs.getString("description"));
+        story.setDescription(rs.getString("story_description"));
         story.setCategory(Category.valueOf(rs.getString("category")));
         return story;
     }

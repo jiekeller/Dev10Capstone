@@ -9,13 +9,13 @@ public class Story {
     private String title;
     private String description;
     private String text;
-    private LocalDate publishedDate;
+    private String publishedDate;
     private Category category;
 
     public Story() {
     }
 
-    public Story(int id, String title, Author author, String description, String text, LocalDate publishedDate, Category category) {
+    public Story(int id, String title, Author author, String description, String text, String publishedDate, Category category) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -61,11 +61,11 @@ public class Story {
         this.text = text;
     }
 
-    public LocalDate getPublishedDate() {
+    public String getPublishedDate() {
         return publishedDate;
     }
 
-    public void setPublishedDate(LocalDate publishedDate) {
+    public void setPublishedDate(String publishedDate) {
         this.publishedDate = publishedDate;
     }
 

@@ -1,5 +1,7 @@
 package learn.nlp.models;
 
+import java.util.Objects;
+
 public class Author {
     private int id;
     private String name;
@@ -36,5 +38,17 @@ public class Author {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Author author)) return false;
+        return id == author.id && Objects.equals(name, author.name) && Objects.equals(description, author.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description);
     }
 }
