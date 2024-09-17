@@ -57,7 +57,7 @@ public class WordDocumentSimilarity {
         }
 
         if (documentVector != null && count > 0) {
-            documentVector.divi(count);  // Take the average of the word vectors
+            documentVector.divi(count);  // Take the average of the word vectors // this is called the centroid vector!!
         }
 
         return documentVector;
