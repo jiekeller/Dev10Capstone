@@ -1,4 +1,4 @@
-package learn.examples;
+package learn.nlp.examples;
 
 import org.apache.lucene.document.*;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;

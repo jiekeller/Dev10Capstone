@@ -1,4 +1,4 @@
-package learn.examples;
+package learn.nlp.examples;
 
 import org.deeplearning4j.models.word2vec.Word2Vec;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;

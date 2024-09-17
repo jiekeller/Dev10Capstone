@@ -1,4 +1,4 @@
-package learn.examples;
+package learn.nlp.examples;
 
 import edu.stanford.nlp.pipeline.*;
 import edu.stanford.nlp.ling.*;
