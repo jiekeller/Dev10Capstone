@@ -9,6 +9,8 @@ public class Result<T> {
     private ArrayList<String> messages = new ArrayList<>();
     private T payload;
 
+    private ActionStatus status = ActionStatus.SUCCESS;
+
     public boolean isSuccess() {
         return messages.size() == 0;
     }
@@ -38,6 +40,11 @@ public class Result<T> {
 
         if (!Objects.equals(messages, result.messages)) return false;
         return Objects.equals(payload, result.payload);
+    }
+
+    public void addErrorMessage(ActionStatus status, String message) {
+        this.status = status;
+        messages.add(message);
     }
 
     @Override

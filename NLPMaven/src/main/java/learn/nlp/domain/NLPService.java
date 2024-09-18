@@ -170,6 +170,7 @@ public class NLPService {
         }
 
         result.setPayload(namedEntities.toString());
+        System.out.println(namedEntities.toString());
         return result;
     }
 
