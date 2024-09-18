@@ -22,35 +22,46 @@ public class NLPService {
     // Load the pretrained Word2Vec model
     private final Word2Vec word2Vec = WordVectorSerializer.readWord2VecModel(modelFile);
 
-    public double wordToWordSimilarity(String word1, String word2) {
+    public Result<Double> wordToWordSimilarity(String word1, String word2) {
+        Result<Double> result = new Result<>();
         if (word1 == null || word2 == null || word1.isEmpty() || word2.isEmpty()) {
-            return -1;
+            result.addErrorMessage("Words cannot be null or empty.");
+            return result;
         }
         // Find the cosine similarity between two words
         double similarity = word2Vec.similarity(word1, word2);
-        return similarity;
+        result.setPayload(similarity);
+        return result;
     }
 
-    public String[] closestWords(String word, int n) {
+    public Result<String[]> closestWords(String word, int n) {
+        Result<String[]> result = new Result<>();
         if (word == null || n <= 0 || n > word2Vec.vocab().numWords() || word.isEmpty()) {
-            return new String[0];
+            result.addErrorMessage("Word cannot be null or empty, and n must be greater than 0 and less than the vocabulary size.");
+            return result;
         }
         // Find the top n closest words to the given word
-        return word2Vec.wordsNearest(word, n).toArray(new String[0]);
+        result.setPayload(word2Vec.wordsNearest(word, n).toArray(new String[0]));
+        return result;
     }
 
-    public INDArray getWordVector(String word) {
+    public Result<INDArray> getWordVector(String word) {
+        Result<INDArray> result = new Result<>();
         if (word == null) {
-            return null;
+            result.addErrorMessage("Word cannot be null.");
+            return result;
         }
         // Get the vector for a word
-        return word2Vec.getWordVectorMatrix(word);
+        result.setPayload(word2Vec.getWordVectorMatrix(word));
+        return result;
     }
 
-    public double wordToDocumentSimilarity(String word, String document) {
+    public Result<Double> wordToDocumentSimilarity(String word, String document) {
+        Result<Double> result = new Result<>();
 
         if (word == null || document == null || document.isEmpty() || word.isEmpty()) {
-            return -1;
+            result.addErrorMessage("Word and document cannot be null or empty.");
+            return result;
         }
 
         // Compute the vector for the word
@@ -62,9 +73,11 @@ public class NLPService {
         if (wordVector != null && documentVector != null) {
             // Compute cosine similarity between the word and the document
             double similarity = Transforms.cosineSim(wordVector, documentVector);
-            return similarity;
+            result.setPayload(similarity);
+            return result;
         } else {
-            return -1;
+            result.addErrorMessage("Word or document not found in the vocabulary.");
+            return result;
         }
     }
 
@@ -93,10 +106,11 @@ public class NLPService {
         return documentVector;
     }
 
-    public String getSentiment(String text) {
-
+    public Result<String> getSentiment(String text) {
+        Result<String> result = new Result<>();
         if (text == null || text.isEmpty()) {
-            return null;
+            result.addErrorMessage("Text cannot be null or empty.");
+            return result;
         }
 
         // Create a StanfordCoreNLP object and set properties
@@ -115,13 +129,16 @@ public class NLPService {
         String sentiment = annotation.get(CoreAnnotations.SentencesAnnotation.class)
                 .get(0).get(SentimentCoreAnnotations.SentimentClass.class);
 
-        return sentiment;
+        result.setPayload(sentiment);
+        return result;
     }
 
-    public String getNamedEntities(String text) {
+    public Result<String> getNamedEntities(String text) {
+        Result<String> result = new Result<>();
 
         if (text == null || text.isEmpty()) {
-            return null;
+            result.addErrorMessage("Text cannot be null or empty.");
+            return result;
         }
 
         Properties props = new Properties();
@@ -152,7 +169,8 @@ public class NLPService {
             }
         }
 
-        return namedEntities.toString();
+        result.setPayload(namedEntities.toString());
+        return result;
     }
 
 
