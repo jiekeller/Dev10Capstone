@@ -32,8 +32,6 @@ public class SecurityConfig {
         //CORS related requests (such as preflight checks)
         http.cors(Customizer.withDefaults());
 
-        // the order of the antMatchers() method calls is important
-        // as they're evaluated in the order that they're added
         http.authorizeHttpRequests(authorize -> authorize
                 // new...
                 .requestMatchers("/authenticate").permitAll()
