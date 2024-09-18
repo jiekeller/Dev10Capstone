@@ -37,7 +37,7 @@ public class SecurityConfig {
                 .requestMatchers("/authenticate").permitAll()
                 .requestMatchers("/refresh_token").authenticated()
                 .requestMatchers("/create_account").permitAll()
-                .requestMatchers(HttpMethod.GET,
+                .requestMatchers(HttpMethod.PUT,
                         "/api/nlp", "/api/nlp/*").permitAll()
                 .requestMatchers(HttpMethod.GET,
                         "/api/story").permitAll()
