@@ -37,13 +37,13 @@ export default function Story() {
     return (
         <div className="text-center">
             <h1 className="text-5xl p-6">Word-to-Document Similarity!</h1>
-            <div className="text-left text-xl p-6">
+            <div className="w-3/5 text-xl p-6">
                 <p>Enter a word to compare to the {newStory.category.toLowerCase()}:</p>
             </div>
             <div className="flex space-x-4 justify-center">
                 <label className="input input-bordered flex items-center gap-2 w-1/3">
-                    Word2
-                    <input type="text" className="grow" placeholder="Orange" value={word} onChange={(e) => setWord(e.target.value)} id="word" name="word" />
+                    Word
+                    <input type="text" className="grow" placeholder="Example" value={word} onChange={(e) => setWord(e.target.value)} id="word" name="word" />
                 </label>
                 <button className="btn btn-outline btn-info"
                     onMouseOver={(e) => e.target.style.backgroundColor = 'lightblue'}
@@ -58,7 +58,7 @@ export default function Story() {
             <h2 className="text-xl p-2">By: {newStory.author.name}</h2>
             <p>{newStory.description}</p>
             <div>
-                <p className="text-xl p-6">{newStory.text}</p>
+                <p className="text-xl p-6 px-20">{newStory.text}</p>
             </div>
         </div>
     )
