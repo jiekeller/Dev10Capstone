@@ -3,6 +3,7 @@ import Landing from "./components/Landing";
 import LearnNLP from "./components/LearnNLP";
 import ExploreNLP from "./components/ExploreNLP";
 import Stories from "./components/Stories";
+import Story from "./components/Story";
 
 import App from "./App";
 
@@ -27,6 +28,10 @@ function AppRouter() {
                 {
                     path: "/Stories",
                     element: <Stories />
+                },
+                {
+                    path:"/story/:id",
+                    element: <Story />
                 }
             ]
         }

@@ -1,5 +1,5 @@
-import {Link} from 'react-router-dom';
-import {useState, useEffect, useContext} from 'react';
+import { Link } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
 
 export default function Stories() {
 
@@ -7,32 +7,38 @@ export default function Stories() {
 
     useEffect(() => {
         fetch('http://localhost:8080/api/story')
-        .then(res => res.json())
-        .then(data => setStories(data));
+            .then(res => res.json())
+            .then(data => setStories(data));
     }
-    , []);
+        , []);
 
     console.log(stories);
 
     return (
-        <div>
-            <h1 className="text-5xl p-6" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}>Welcome to the Stories page!</h1>
-            <h2 style={{ fontSize: '24px', fontWeight: 'bold' , marginBottom: '20px'}} >Here are some stories:</h2>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+        <div className="text-center">
+            <h1 className="text-5xl p-6">
+                Let's Use NLP Tools to Examine Some Text!
+            </h1>
+            <div className="flex space-x-6 justify-center">
                 {stories.map((story, index) => (
-                    <div key={index} style={{ border: '1px solid #ccc', borderRadius: '8px', padding: '16px', width: '300px' }}>
-                        <h3>
-                            <Link to={`/story/${story.id}`}>
+                    <div key={index} className="card bg-base-100 w-96 shadow-xl" >
+                        <div className="card-body items-center text-center">
+                            <h3 className="card-title">
                                 {story.title}
+                            </h3>
+                            <p><strong>Description:</strong> {story.description}</p>
+                            <p><strong>Author:</strong> {story.author.name}</p>
+                            <p><strong>Category:</strong> {story.category}</p>
+                            <div className="card-actions justify-end">
+                            <Link state={story} className="btn btn-accent btn-sm" to={`/story/${story.id}`}>
+                                    Examine
                             </Link>
-                        </h3>
-                        <p><strong>Author:</strong> {story.author.name}</p>
-                        <p><strong>Description:</strong> {story.description}</p>
-                        <p><strong>Category:</strong> {story.category}</p>
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>
         </div>
     );
-    }
+}
 
