@@ -70,8 +70,8 @@ insert into author (`name`) values
     ('The Founding Fathers');
 
 insert into category (`type`) values
-	('Document'),
-    ('Short Story');
+	('DOCUMENT'),
+    ('SHORT_STORY');
 
 insert into story (title, author_id, `text`, cat_id) values
 	('Steelheart', 1, 'This was a book about steel, and his name was heart', 1);
