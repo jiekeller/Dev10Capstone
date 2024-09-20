@@ -29,7 +29,7 @@ export default function Login() {
         password,
       }),
     });
-  
+
     // This code executes if the request is successful
     if (response.status === 200) {
       const { jwt_token } = await response.json();
@@ -46,30 +46,32 @@ export default function Login() {
 
   return (
     <div>
-      <h2>Login</h2>
+      <h2 className="text-3xl p-6 font-semibold leading-7 text-gray-900">Login</h2>
       {errors.map((error, i) => (
         <Error key={i} msg={error} />
       ))}
       <form onSubmit={handleSubmit}>
-        <div>
-          {/* Includes for/id attributes for basic HTML accessibility ♿. */}
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            onChange={(event) => setUsername(event.target.value)}
-            id="username"
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            onChange={(event) => setPassword(event.target.value)}
-            id="password"
-          />
-        </div>
-        <div>
-          <button type="submit">Login</button>
+        <div className="border-b border-gray-900/10 px-12">
+          <div >
+            {/* Includes for/id attributes for basic HTML accessibility ♿. */}
+            <label className="pr-10" htmlFor="username">Username:</label>
+            <input className="input input-bordered w-1/5"
+              type="text"
+              onChange={(event) => setUsername(event.target.value)}
+              id="username"
+            />
+          </div>
+          <div className="mt-3">
+            <label className="pr-10" htmlFor="password">Password:</label>
+            <input className="input input-bordered w-1/5 ml-1"
+              type="password"
+              onChange={(event) => setPassword(event.target.value)}
+              id="password"
+            />
+          </div>
+          <div className="p-3">
+            <button className="btn btn-info btn-sm" type="submit">Login</button>
+          </div>
         </div>
       </form>
     </div>

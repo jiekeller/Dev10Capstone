@@ -25,7 +25,7 @@ export default function Stories() {
             <h1 className="text-5xl p-6">
                 Let's Use NLP Tools to Examine Some Text!
             </h1>
-            <div className="text-left px-10">
+            <div className="px-10 w-3/5">
                 {canEdit && (
                     <Link to="/add" className="btn btn-primary btn-lg">
                         Add a Story

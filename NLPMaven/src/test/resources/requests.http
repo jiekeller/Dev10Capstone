@@ -1,4 +1,4 @@
-@BASE_URL = http://localhost:8080/api/nlp
+@BASE_URL = http://localhost:8080/api/story
 
 ###
 PUT {{BASE_URL}} HTTP/1.1
@@ -74,6 +74,25 @@ POST http://localhost:8080/authenticate HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "bob@jones.com",
+    "username": "john@smith.com",
     "password": "P@ssw0rd!"
+}
+
+###
+PUT http://localhost:8080/api/story/1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhcHBVc2VySWQiOjEsImF1dGhvcml0aWVzIjpbIkFETUlOIl0sImV4cCI6MTcyNjg2MzI2N30.X6lDjFhUqDIMSYMeXZVbDs7K3o3XOXiXqR9w8SDDbJM
+
+{
+    "author": {
+        "id": 1,
+        "name": "George Orwell",
+        "description": null
+    },
+    "id": 1,
+    "title": "Steelheart",
+    "description": "new york times bestseller",
+    "text": "This was a book about steel, and his name was heart",
+    "publishedDate": null,
+    "category": "DOCUMENT"
 }
