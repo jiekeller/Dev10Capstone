@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import AuthContext from "./context/AuthContext";
 import {jwtDecode} from "jwt-decode";
 import StoryForm from "./components/StoryForm";
+import ConfirmDelete from "./components/ConfirmDelete";
 
 const LOCAL_STORAGE_TOKEN_KEY = "nlp_app_token";
 
@@ -117,6 +118,10 @@ function AppRouter() {
                 {
                     path: "/add",
                     element: user ? <StoryForm /> : <Navigate to="/login" replace={true} />
+                },
+                {
+                    path: "/delete/:id",
+                    element: user ? <ConfirmDelete /> : <Navigate to="/login" replace={true} />
                 }
             ]
         }

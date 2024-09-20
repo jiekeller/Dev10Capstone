@@ -18,21 +18,6 @@ export default function Stories() {
     }
         , []);
 
-    const handleDelete = async (id) => {
-        const response = await fetch(`http://localhost:8080/api/story/${id}`, {
-            method: "DELETE",
-            headers: {
-                Authorization: `Bearer ${auth.user.token}`,
-            },
-        });
-
-        if (response.status === 204) {
-            setStories(stories.filter((story) => story.id !== id));
-        } else {
-            console.error("Delete failed.");
-        }
-    }
-
     console.log(stories);
 
     return (
@@ -67,9 +52,9 @@ export default function Stories() {
                                     </Link>
                                 )}
                                 {canDelete && (
-                                    <button className="btn btn-error btn-sm" onClick={handleDelete(story.id)}>
+                                    <Link state={story} className="btn btn-error btn-sm" to={`/delete/${story.id}`}>
                                         Delete
-                                    </button>
+                                    </Link>
                                 )}
                             </div>
                         </div>
