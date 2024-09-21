@@ -1,4 +1,4 @@
-package learn.nlp.data;
+package learn.nlp.data.mapper;
 
 import learn.nlp.models.AppUser;
 import org.springframework.jdbc.core.RowMapper;

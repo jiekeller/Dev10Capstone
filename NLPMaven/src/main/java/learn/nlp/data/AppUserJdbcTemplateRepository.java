@@ -1,5 +1,6 @@
 package learn.nlp.data;
 
+import learn.nlp.data.mapper.AppUserMapper;
 import learn.nlp.models.AppUser;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;

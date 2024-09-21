@@ -51,4 +51,8 @@ public class Author {
     public int hashCode() {
         return Objects.hash(id, name, description);
     }
+
+    public void setAuthorId(int authorId) {
+        this.id = authorId;
+    }
 }

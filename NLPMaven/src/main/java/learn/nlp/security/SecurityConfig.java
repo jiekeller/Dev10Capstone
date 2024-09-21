@@ -37,6 +37,12 @@ public class SecurityConfig {
                 .requestMatchers("/authenticate").permitAll()
                 .requestMatchers("/refresh_token").authenticated()
                 .requestMatchers("/create_account").permitAll()
+                .requestMatchers(HttpMethod.GET,
+                        "/api/author", "/api/author/*").permitAll()
+                .requestMatchers(HttpMethod.POST,
+                        "/api/author", "/api/author/*").hasAnyAuthority("USER", "ADMIN")
+                .requestMatchers(HttpMethod.DELETE,
+                        "/api/author/*").hasAnyAuthority("ADMIN")
                 .requestMatchers(HttpMethod.PUT,
                         "/api/nlp", "/api/nlp/*").permitAll()
                 .requestMatchers(HttpMethod.GET,

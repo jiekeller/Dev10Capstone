@@ -1,4 +1,4 @@
-package learn.nlp.data;
+package learn.nlp.data.mapper;
 
 import learn.nlp.models.Author;
 import learn.nlp.models.Category;
