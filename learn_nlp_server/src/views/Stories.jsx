@@ -27,9 +27,13 @@ export default function Stories() {
             </h1>
             <div className="px-10 w-3/5">
                 {canEdit && (
-                    <Link to="/add" className="btn btn-primary btn-lg">
-                        Add a Story
-                    </Link>
+                    <div>
+
+                        <Link to="/add" className="btn btn-primary btn-lg">
+                            Add a Story
+                        </Link>
+
+                    </div>
                 )}
             </div>
             <div className="flex space-x-6 justify-center">

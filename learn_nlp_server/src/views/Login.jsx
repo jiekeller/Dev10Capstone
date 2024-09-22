@@ -2,7 +2,7 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Error from "./Error";
+import Error from "../components/Error";
 // NEW: import AuthContext
 import AuthContext from "../context/AuthContext";
 

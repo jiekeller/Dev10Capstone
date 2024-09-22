@@ -15,6 +15,7 @@ function Nav() {
           <NavLink to="/LearnNLP"><button className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition duration-300">Learn NLP</button></NavLink>
           <NavLink to="/ExploreNLP"><button className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition duration-300">Explore NLP</button></NavLink>
           <NavLink to="/Stories"><button className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition duration-300">Stories</button></NavLink>
+          {auth.user && <NavLink to="/authors"><button className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition duration-300">Authors</button></NavLink>}
         </div>
         <div>
           {auth.user ? (

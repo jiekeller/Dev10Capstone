@@ -1,17 +1,20 @@
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
-import Landing from "./components/Landing";
-import LearnNLP from "./components/LearnNLP";
-import ExploreNLP from "./components/ExploreNLP";
-import Stories from "./components/Stories";
+import Landing from "./views/Landing";
+import LearnNLP from "./views/LearnNLP";
+import ExploreNLP from "./views/ExploreNLP";
+import Stories from "./views/Stories";
 import Story from "./components/Story";
-import Login from "./components/Login";
+import Login from "./views/Login";
 import NotFound from "./components/NotFound";
 import App from "./App";
 import { useState, useEffect } from "react";
 import AuthContext from "./context/AuthContext";
 import {jwtDecode} from "jwt-decode";
-import StoryForm from "./components/StoryForm";
-import ConfirmDelete from "./components/ConfirmDelete";
+import StoryForm from "./views/StoryForm";
+import ConfirmDelete from "./views/ConfirmDelete";
+import Authors from "./views/Authors";
+import AuthorForm from "./components/AuthorForm";
+import ConfirmDeleteAuthor from "./components/ConfirmDeleteAuthor";
 
 const LOCAL_STORAGE_TOKEN_KEY = "nlp_app_token";
 
@@ -122,6 +125,19 @@ function AppRouter() {
                 {
                     path: "/delete/:id",
                     element: user ? <ConfirmDelete /> : <Navigate to="/login" replace={true} />
+                },
+                {
+                    path: "/authors",
+                    element: user ? <Authors /> : <Navigate to="/login" replace={true} />
+                },
+                { 
+                    path: "/authors/add", 
+                    element: user ? <AuthorForm /> : <Navigate to="/login" replace={true} />
+                },
+                {
+                    path: "authors/delete",
+                    element: user ? <ConfirmDeleteAuthor /> : <Navigate to="/login" replace={true} />
+
                 }
             ]
         }

@@ -1,8 +1,8 @@
-import { Description } from '@headlessui/react';
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import { useContext } from 'react';
+import AuthorSearch from './AuthorSearch';
 
 const INITIAL_STORY = {
     id: 0,
@@ -47,12 +47,17 @@ export default function StoryForm() {
                     if (!data.publishedDate) {
                         data.publishedDate = '';
                     }
-                    setStory(data)})
+                    setStory(data)
+                })
                 .catch(console.error);
         }
     }, [id]);
 
     function doCreate() {
+        console.log(JSON.stringify(story));
+        if (story.publishedDate === '') {
+            story.publishedDate = null;
+        }
         fetch(`http://localhost:8080/api/story`, {
             method: 'POST',
             headers: {
@@ -121,6 +126,15 @@ export default function StoryForm() {
         }
     }
 
+    function handleAuthor(isAdd, author) {
+        if (isAdd) {
+            setStory({ ...story, author: author });
+        } else {
+            setStory({ ...story, author: { name: '', description: '', id: 0 } });
+        }
+        console.log(story.author);
+    }
+
     return (
         <div>
             <h2 className="text-3xl p-6 font-semibold leading-7 text-gray-900">{story.id > 0 ? 'Update' : 'Add'} </h2>
@@ -131,6 +145,9 @@ export default function StoryForm() {
                             <label className="pr-10" htmlFor="title">Title</label>
                             <input className="input input-bordered w-1/2"
                                 type="text" id="title" name="title" value={story.title} onChange={handleChange} />
+                        </div>
+                        <div className="mb-3">
+                            <AuthorSearch storyAuthor={[story.author]} handleAuthor={handleAuthor} />
                         </div>
                         <div>
                             <label className="pr-10" htmlFor="text">Text</label>
@@ -157,9 +174,9 @@ export default function StoryForm() {
                         </div>
                         <div className="p-6">
                             <button className="btn btn-primary"
-                            type="submit">Submit</button>
+                                type="submit">Submit</button>
                             <button className="btn btn-active ml-4"
-                            type="button" onClick={() => navigate('/')}>Cancel</button>
+                                type="button" onClick={() => navigate('/')}>Cancel</button>
                         </div>
                     </div>
                 </div>
