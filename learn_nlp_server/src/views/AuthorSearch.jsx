@@ -18,7 +18,7 @@ export default function AuthorSearch({ storyAuthor, handleAuthor }) {
 
     function handleClick(evt) {
         evt.preventDefault();
-        const author = authors.find(a => a.id === parseInt(evt.target.value));
+        let author = authors.find(a => a.id === parseInt(evt.target.value));
         const authorId = parseInt(evt.target.value);
         const action = evt.target.getAttribute("data-action");
         if (!author) {

@@ -135,7 +135,7 @@ function AppRouter() {
                     element: user ? <AuthorForm /> : <Navigate to="/login" replace={true} />
                 },
                 {
-                    path: "authors/delete",
+                    path: "authors/delete/:id",
                     element: user ? <ConfirmDeleteAuthor /> : <Navigate to="/login" replace={true} />
 
                 }

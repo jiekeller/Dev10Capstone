@@ -27,15 +27,15 @@ export default function ConfirmDelete() {
 
 
     return (
-        <div>
-            <p>Are you sure you want to delete this?</p>
-            <p>{deleteStory.title}</p>
-            <p>{deleteStory.description}</p>
-            <p>{deleteStory.author.name}</p>
-            <p>{deleteStory.category}</p>
+        <div className="px-10 pt-5" style={{fontFamily: 'Arial, sans-serif'}}>
+            <p className="text-xl">Are you sure you want to delete this?</p>
+            <p className="pt-5">Title: {deleteStory.title}</p>
+            <p>Description: {deleteStory.description}</p>
+            <p>Author: {deleteStory.author.name}</p>
+            <p>Category: {deleteStory.category}</p>
             <div>
-                <button onClick={handleDelete}>Confirm</button>
-                <button type="button" onClick={() => navigate('/stories')}>Cancel</button>
+                <button className="btn btn-warning btn-sm"  onClick={handleDelete}>Confirm</button>
+                <button className="btn btn-active btn-sm ml-2" type="button" onClick={() => navigate('/stories')}>Cancel</button>
                 </div>
         </div>
     )

@@ -3,7 +3,18 @@
 
 export default {
   daisyui: {
-    themes: ["light"], // You can add or remove themes here
+    themes: false, // You can add or remove themes here
+  },
+  theme: {
+    extend: {
+      colors: {
+        'primary-blue': '#39acff',
+        'primary-blue-light': '#a0d8ff',
+        'primary-blue-dark': '#0071c2',
+        'aqua': '#39ffe6',
+        'grey-blue': '#39ffe6'
+      },
+    },
   },
   content: [
     './index.html',

@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { findByName } from "../api/authorApi";
 import SearchBar from "../components/SearchBar";
+import AuthContext from "../context/AuthContext";
 
 export default function Authors() {
     const [authors, setAuthors] = useState();
     const [search, setSearch] = useState("");
+
+    const auth = useContext(AuthContext);
+
+    const canDelete = auth.user && auth.user.hasRole("ADMIN");
 
     useEffect(() => {
         if (search.length > 1) {
@@ -23,7 +28,7 @@ export default function Authors() {
                 Authors
             </h1>
             <div className="w-2/5 mb-4">
-                <Link to="/authors/add" className="btn btn-primary">Add Author</Link>
+                <Link to="/authors/add" className="btn bg-blue-600 text-white btn-lg hover:bg-blue-900 transition duration-300">Add Author</Link>
             </div>
             <div className="items-center justify-center text-center px-6">
                 <div>
@@ -38,6 +43,9 @@ export default function Authors() {
                             <div className="card-body">
                                 <h5 className="card-title text-blue-600 font-bold">{author.name}</h5>
                                 <p className="card-text text-blue-400">{author.description}</p>
+                                {canDelete && (
+                                    <Link state={author} to={`/authors/delete/${author.id}`} className="btn bg-purple-400 text-white btn-sm hover:bg-purple-600 transition duration-300">Delete</Link>
+                                )}
                             </div>
                         </div>
                     </div>

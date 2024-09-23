@@ -176,8 +176,8 @@ export default function StoryForm() {
                                 type="text" id="publishedDate" name="publishedDate" value={story.publishedDate} onChange={handleChange} />
                         </div>
                         <div className="p-6">
-                            <button className="btn btn-primary"
-                                type="submit">Submit</button>
+                            <button className="btn bg-blue-600 text-white hover:bg-blue-900 transition duration-300"
+                                type="submit">Add</button>
                             <button className="btn btn-active ml-4"
                                 type="button" onClick={() => navigate('/')}>Cancel</button>
                         </div>

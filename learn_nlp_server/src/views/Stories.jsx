@@ -29,16 +29,16 @@ export default function Stories() {
                 {canEdit && (
                     <div>
 
-                        <Link to="/add" className="btn btn-primary btn-lg">
+                        <Link to="/add" className="btn bg-blue-600 text-white btn-lg hover:bg-blue-900 transition duration-300">
                             Add a Story
                         </Link>
 
                     </div>
                 )}
             </div>
-            <div className="flex space-x-6 justify-center">
+            <div className="flex space-x-6 justify-center flex-wrap">
                 {stories.map((story, index) => (
-                    <div key={index} className="card bg-base-100 w-96 shadow-xl">
+                    <div key={index} className="card bg-base-100 w-96 min-w-96 shadow-xl">
                         <div className="card-body items-center text-center">
                             <h3 className="card-title">
                                 {story.title}
@@ -47,16 +47,16 @@ export default function Stories() {
                             <p><strong>Author:</strong> {story.author.name}</p>
                             <p><strong>Category:</strong> {story.category}</p>
                             <div className="card-actions justify-end">
-                                <Link state={story} className="btn btn-accent btn-sm" to={`/story/${story.id}`}>
+                                <Link state={story} className="btn bg-blue-900 text-white btn-sm hover:bg-blue-400 transition duration-300" to={`/story/${story.id}`}>
                                     Examine
                                 </Link>
                                 {canEdit && (
-                                    <Link className="btn btn-primary btn-sm" to={`/edit/${story.id}`}>
+                                    <Link className="btn bg-cyan-600 text-white btn-sm hover:bg-cyan-400 transition duration-300" to={`/edit/${story.id}`}>
                                         Edit
                                     </Link>
                                 )}
                                 {canDelete && (
-                                    <Link state={story} className="btn btn-error btn-sm" to={`/delete/${story.id}`}>
+                                    <Link state={story} className="btn bg-purple-400 text-white btn-sm hover:bg-purple-600 transition duration-300" to={`/delete/${story.id}`}>
                                         Delete
                                     </Link>
                                 )}
