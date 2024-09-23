@@ -13,10 +13,10 @@ const INITIAL_STORY = {
         id: 0
     },
     description: '',
-    category: '',
+    category: null,
     title: '',
     text: '',
-    publishedDate: ''
+    publishedDate: null
 };
 
 export default function StoryForm() {
@@ -62,9 +62,12 @@ export default function StoryForm() {
 
     function doCreate() {
         console.log(JSON.stringify(story));
-        if (story.publishedDate === '') {
-            story.publishedDate = null;
-        }
+        // if (story.publishedDate === '') {
+        //     story.publishedDate = null;
+        // }
+        // if (story.category === '') {
+        //     story.category = null;
+        // }
         fetch(`http://localhost:8080/api/story`, {
             method: 'POST',
             headers: {
@@ -72,25 +75,22 @@ export default function StoryForm() {
                 Authorization: `Bearer ${auth.user.token}`,
             },
             body: JSON.stringify(story),
-        })
-            .then(res => {
-                if (res.ok) {
-                    navigate(`/stories`);
-                } else if (res.status === 400) {
-                    // Log for now, we'll come back to this!
-                    console.log(res);
-                } else {
-                    //If the response code is anything else, reject promise and throw code execution to .catch()
-                    return Promise.reject(
-                        new Error(`Unexpected status code: ${res.status}`)
-                    );
-                }
-            })
-            .catch(error => {
-                console.error(error);
-                setErrors([error.message]);
-            }) // For now, just log any other types of errors
-            
+        }).then(res => {
+            if (res.ok) {
+                navigate(`/stories`);
+            } else if (res.status === 400) {
+                // Log for now, we'll come back to this!
+                console.log(res);
+                return res.json();
+            } else {
+                //If the response code is anything else, reject promise and throw code execution to .catch()
+                return Promise.reject(
+                    ["Unexpected response code: " + res.status]
+                );
+            }
+        }).then(setErrors)
+        .catch(setErrors); // For now, just log any other types of errors
+
     }
 
     function doUpdate() {
@@ -190,17 +190,17 @@ export default function StoryForm() {
                             <button className="btn bg-blue-600 text-white hover:bg-blue-900 transition duration-300"
                                 type="submit">Add</button>
                             <button className="btn btn-active ml-4"
-                                type="button" onClick={() => navigate('/')}>Cancel</button>
+                                type="button" onClick={() => navigate('/stories')}>Cancel</button>
                         </div>
                     </div>
                 </div>
-                {errors?.length !== 0 && <div className="alert alert-danger">
-                <ul>
-                    {errors?.map((error, index) => (
-                        <li key={index}>{error}</li>
-                    ))}
-                </ul>
-            </div>}
+                {errors?.length !== 0 && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    <ul>
+                        {errors?.map((error, index) => (
+                            <li key={index}>{error}</li>
+                        ))}
+                    </ul>
+                </div>}
             </form>
         </div>
     );
