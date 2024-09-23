@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import { useContext } from 'react';
+import Error from '../components/Error';
 
 const INITIAL_AUTHOR = {
     id: 0,
@@ -13,6 +14,8 @@ export default function AuthorForm() {
     const [author, setAuthor] = useState(INITIAL_AUTHOR);
     const navigate = useNavigate();
     const auth = useContext(AuthContext);
+
+    const [errors, setErrors] = useState([]);
 
     function handleChange(e) {
         const updatedAuthor = { ...author };
@@ -30,13 +33,17 @@ export default function AuthorForm() {
                 Authorization: `Bearer ${auth.user.token}`,
             },
             body: JSON.stringify(author),
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
+        }).then(res => {
+            if (res.ok) {
                 navigate('/authors');
-            })
-            .catch(console.error);
+            } else if (res.status === 400) {
+                return res.json();
+            } else {
+                return Promise.reject(["Unexpected response code: " + res.status]);
+            }
+        }).then(setErrors)
+        .catch(setErrors);
+
     }
 
     function handleSubmit(e) {
@@ -64,6 +71,13 @@ export default function AuthorForm() {
                         </div>
                     </div>
                 </div>
+                {errors?.length !== 0 && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    <ul>
+                        {errors?.map((error, index) => (
+                            <li key={index}>{error}</li>
+                        ))}
+                    </ul>
+                </div>}
 
             </form>
         </div>

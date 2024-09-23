@@ -57,7 +57,7 @@ public class AuthorService {
         }
 
         if (author.getName() == null || author.getName().isBlank()) {
-            result.addErrorMessage("Author last name is required.");
+            result.addErrorMessage("Author name is required.");
         }
 
 

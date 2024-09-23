@@ -18,6 +18,8 @@ import ConfirmDeleteAuthor from "./components/ConfirmDeleteAuthor";
 
 const LOCAL_STORAGE_TOKEN_KEY = "nlp_app_token";
 
+const timer = 1000 * 60 * 14; // 14 minutes
+
 
 function AppRouter() {
     const [user, setUser] = useState(null);
@@ -26,12 +28,23 @@ function AppRouter() {
 
     // NEW: Define a useEffect hook callback function to attempt
     // to restore the user's token from localStorage
-    useEffect(() => {
-        const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
-        if (token) {
-            login(token);
+    function refreshToken() {
+        if (localStorage.getItem("jwt")) {
+            refresh()
+                .then(setUser)
+                .catch(logout)
+                .finally(() => {
+                    setRestoreLoginAttemptCompleted(true);
+                    localStorage.getItem("jwt") &&
+                        setTimeout(refreshToken, timer);
+                });
+        } else {
+            setRestoreLoginAttemptCompleted(true);
         }
-        setRestoreLoginAttemptCompleted(true);
+    }
+
+    useEffect(() => {
+        refreshToken();
     }, []);
 
     const login = (token) => {

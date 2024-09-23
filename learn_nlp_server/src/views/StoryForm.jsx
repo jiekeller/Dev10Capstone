@@ -13,10 +13,10 @@ const INITIAL_STORY = {
         id: 0
     },
     description: '',
-    category: null,
+    category: '',
     title: '',
     text: '',
-    publishedDate: null
+    publishedDate: ''
 };
 
 export default function StoryForm() {
@@ -62,12 +62,12 @@ export default function StoryForm() {
 
     function doCreate() {
         console.log(JSON.stringify(story));
-        // if (story.publishedDate === '') {
-        //     story.publishedDate = null;
-        // }
-        // if (story.category === '') {
-        //     story.category = null;
-        // }
+        if (story.publishedDate === '') {
+            story.publishedDate = null;
+        }
+        if (story.category === '') {
+            story.category = null;
+        }
         fetch(`http://localhost:8080/api/story`, {
             method: 'POST',
             headers: {
@@ -157,7 +157,7 @@ export default function StoryForm() {
                     <div className="border-b border-gray-900/10 px-12">
                         <div className="">
                             <label className="pr-10" htmlFor="title">Title</label>
-                            <input className="input input-bordered w-1/2"
+                            <input className="input border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-1/2"
                                 type="text" id="title" name="title" value={story.title} onChange={handleChange} />
                         </div>
                         <div className="mb-3">
@@ -182,8 +182,13 @@ export default function StoryForm() {
                             </div>
                         </div>
                         <div>
+                            <label className="pr-10" htmlFor="description">Description</label>
+                            <textarea className="w-full h-16 p-2 m-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                id="description" name="description" value={story.description} onChange={handleChange} />
+                        </div>
+                        <div>
                             <label className="pr-10" htmlFor="publishedDate">Published Date</label>
-                            <input className="input input-bordered w-1/2" placeholder="yyyy-mm-dd"
+                            <input className="input border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-1/2" placeholder="yyyy-mm-dd"
                                 type="text" id="publishedDate" name="publishedDate" value={story.publishedDate} onChange={handleChange} />
                         </div>
                         <div className="p-6">

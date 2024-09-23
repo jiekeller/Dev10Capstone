@@ -30,37 +30,40 @@ export default function AuthorSearch({ storyAuthor, handleAuthor }) {
 
     return (
         <div>
-            <div>
+            <div className="mb-5">
                 <label htmlFor="author">Author</label>
                 <input
                     type="text"
                     id="author"
                     name="author"
                     value={search}
-                    className="form-control"
+                    className="mt-2 form-control border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     onChange={evt => setSearch(evt.target.value)}
                 />
             </div>
-            {storyAuthor?.filter(author => author.name).map(author => (
-                <div className="row mb-2" key={author.id}>
-                    <div className="col-2">{author.name}</div>
-                    <div className="col-10">
-                        <button type="button" className="btn btn-danger btn-sm" data-action="remove"
-                            value={author.id} onClick={handleClick}>Remove</button>
-                    </div>
-                </div>
-            ))}
-            {authors
-                ?.filter(a => a.name && !storyAuthor.some(ba => ba.id === a.id))
-                .map(author => (
+            <div className="mt-1">
+                {storyAuthor?.filter(author => author.name).map(author => (
                     <div className="row mb-2" key={author.id}>
                         <div className="col-2">{author.name}</div>
                         <div className="col-10">
-                            <button type="button" className="btn btn-primary btn-sm" data-action="add"
-                                value={author.id} onClick={handleClick}>Add</button>
+                            <button type="button" className="btn btn-danger btn-sm" data-action="remove"
+                                value={author.id} onClick={handleClick}>Remove</button>
                         </div>
                     </div>
                 ))}
+                {authors
+                    ?.filter(a => a.name && !storyAuthor.some(ba => ba.id === a.id))
+                    .map(author => (
+                        <div className="row mb-2" key={author.id}>
+                            <div className="col-2">{author.name}</div>
+                            <div className="col-10">
+                                <button type="button" className="btn btn-primary btn-sm" data-action="add"
+                                    value={author.id} onClick={handleClick}>Add</button>
+                            </div>
+                        </div>
+                    ))}
+
+            </div>
         </div>
     );
 
