@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import { useContext } from 'react';
 import AuthorSearch from './AuthorSearch';
+import Error from '../components/Error';
 
 const INITIAL_STORY = {
     id: 0,
@@ -23,6 +24,8 @@ export default function StoryForm() {
     const navigate = useNavigate();
     const { id } = useParams();
     const auth = useContext(AuthContext);
+
+    const [errors, setErrors] = useState([]);
 
 
     function handleChange(e) {
@@ -50,7 +53,10 @@ export default function StoryForm() {
                     }
                     setStory(data)
                 })
-                .catch(console.error);
+                .catch(error => {
+                    console.error(error);
+                    setErrors([error.message]);
+                });
         }
     }, [id]);
 
@@ -80,7 +86,11 @@ export default function StoryForm() {
                     );
                 }
             })
-            .catch(console.error); // For now, just log any other types of errors
+            .catch(error => {
+                console.error(error);
+                setErrors([error.message]);
+            }) // For now, just log any other types of errors
+            
     }
 
     function doUpdate() {
@@ -119,6 +129,7 @@ export default function StoryForm() {
 
     function handleSubmit(e) {
         e.preventDefault();
+        console.log(story);
 
         if (story.id > 0) {
             doUpdate();
@@ -183,6 +194,13 @@ export default function StoryForm() {
                         </div>
                     </div>
                 </div>
+                {errors?.length !== 0 && <div className="alert alert-danger">
+                <ul>
+                    {errors?.map((error, index) => (
+                        <li key={index}>{error}</li>
+                    ))}
+                </ul>
+            </div>}
             </form>
         </div>
     );
