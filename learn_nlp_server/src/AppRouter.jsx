@@ -44,6 +44,14 @@ function AppRouter() {
     }
 
     useEffect(() => {
+        const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
+        if (token) {
+          login(token);
+        }
+        setRestoreLoginAttemptCompleted(true);
+      }, []);
+
+    useEffect(() => {
         refreshToken();
     }, []);
 
