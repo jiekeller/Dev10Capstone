@@ -36,6 +36,7 @@ export default function StoryForm() {
         setStory(updatedStory);
 
         console.log(updatedStory);
+
     }
 
     useEffect(() => {
@@ -132,7 +133,9 @@ export default function StoryForm() {
         } else {
             setStory({ ...story, author: { name: '', description: '', id: 0 } });
         }
+
         console.log(story.author);
+
     }
 
     return (

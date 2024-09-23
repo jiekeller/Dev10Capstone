@@ -19,44 +19,49 @@ export default function AuthorSearch({ storyAuthor, handleAuthor }) {
     function handleClick(evt) {
         evt.preventDefault();
         const author = authors.find(a => a.id === parseInt(evt.target.value));
+        const authorId = parseInt(evt.target.value);
         const action = evt.target.getAttribute("data-action");
+        if (!author) {
+            author = storyAuthor.find(a => a.id === authorId);
+        }
         handleAuthor(action === "add", author);
+
     }
 
     return (
         <div>
-            <label htmlFor="author">Author</label>
-            <input
-                type="text"
-                id="author"
-                name="author"
-                value={search}
-                className="form-control"
-                onChange={evt => setSearch(evt.target.value)}
-            />
-            <div className="list-group">
-                {authors.map(author => (
-                    <button
-                        key={author.id}
-                        value={author.id}
-                        onClick={handleClick}
-                        data-action="add"
-                        className="list-group-item list-group-item-action"
-                    >
-                        {author.name}
-                    </button>
-                ))}
+            <div>
+                <label htmlFor="author">Author</label>
+                <input
+                    type="text"
+                    id="author"
+                    name="author"
+                    value={search}
+                    className="form-control"
+                    onChange={evt => setSearch(evt.target.value)}
+                />
             </div>
+            {storyAuthor?.filter(author => author.name).map(author => (
+                <div className="row mb-2" key={author.id}>
+                    <div className="col-2">{author.name}</div>
+                    <div className="col-10">
+                        <button type="button" className="btn btn-danger btn-sm" data-action="remove"
+                            value={author.id} onClick={handleClick}>Remove</button>
+                    </div>
+                </div>
+            ))}
+            {authors
+                ?.filter(a => a.name && !storyAuthor.some(ba => ba.id === a.id))
+                .map(author => (
+                    <div className="row mb-2" key={author.id}>
+                        <div className="col-2">{author.name}</div>
+                        <div className="col-10">
+                            <button type="button" className="btn btn-primary btn-sm" data-action="add"
+                                value={author.id} onClick={handleClick}>Add</button>
+                        </div>
+                    </div>
+                ))}
         </div>
     );
 
-    function handleRemove(authorId) {
-        setAuthors(authors.filter(author => author.id !== authorId));
-    }
-
-    function handleAdd() {
-        const newAuthor = { id: Date.now(), name: search };
-        setAuthors([...authors, newAuthor]);
-        setSearch("");
-    }
 }
