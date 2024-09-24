@@ -70,10 +70,10 @@ insert into author (`name`) values
     ('The Founding Fathers');
 
 insert into category (`type`) values
-	('Document'),
-    ('Short Story'),
-    ('Poem'),
-    ('Other');
+	('DOCUMENT'),
+    ('SHORT_STORY'),
+    ('POEM'),
+    ('OTHER');
 
 insert into app_role (`name`) values
     ('USER'),

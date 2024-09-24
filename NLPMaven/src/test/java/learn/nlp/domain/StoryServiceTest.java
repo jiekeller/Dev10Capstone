@@ -135,7 +135,7 @@ public class StoryServiceTest {
     }
 
     public Story getStory() {
-        return new Story(1, "Title 1", getAuthor(), "descr", "body", "1999-01-01" , Category.SHORT_STORY);
+        return new Story(1, "Title 1", getAuthor(), "descr", "body", "1999-01-01" , Category.OTHER);
     }
 
 }
