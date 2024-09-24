@@ -40,22 +40,59 @@ export default function LearnNLP() {
 
 
             <h3 className="text-4xl px-6 pt-20" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}>A Deeper Dive</h3>
+            <div className="" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', paddingBottom: '100px' }}>
+                <h1 className="text-2xl p-6" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}>Introduction to NLP: Word-to-Word Similarity</h1>
+                <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>Both TF-IDF and Word2Vec are methods used to represent words as numbers (vectors) for use in natural language processing (NLP) tasks, but they work in different ways and serve different purposes.</p>
 
-            <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>
-                One important part of NLP is <strong>word vectorization</strong>. Words are like numbers to a computer, so we need to turn words into numbers before a computer can do anything with them. Word vectorization is a technique that changes words into lists of numbers (called vectors). This helps the computer understand that words like "cat" and "dog" are related because their numbers are similar, while "cat" and "banana" are very different.
-            </p>
-            <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>
-                <strong>Sentiment analysis</strong> is another cool thing computers can do with NLP. It’s like teaching the computer to understand emotions. When we write a review about a movie, we might say we "loved" it or "hated" it. With sentiment analysis, the computer reads the words and figures out if the review is positive (happy) or negative (sad or angry).
-            </p>
-            <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>
-                We also use something called <strong>cosine similarity</strong> when we want to find out how close two pieces of text are to each other. Imagine two long sentences as arrows pointing in different directions. Cosine similarity helps measure the angle between these arrows—if they point in almost the same direction, they’re very similar, like two friends who have the same opinion.
-            </p>
-            <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>
-                Lastly, <strong>named entity recognition</strong> (NER) is when a computer learns to pick out important names in a sentence. For example, in the sentence “Barack Obama was born in Hawaii,” NER helps the computer know that "Barack Obama" is a person and "Hawaii" is a place. This helps the computer understand the meaning behind the words and process important information faster.
-            </p>
-            <p className="text-xl px-4 pb-20" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>
-                NLP helps make technology more useful by enabling computers to understand and process the way we talk and write!
-            </p>
-        </div>
+                <ol>
+                    <li>
+                        <h2 className="text-2xl p-6" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}>1. TF-IDF (Term Frequency-Inverse Document Frequency)</h2>
+                        <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>TF-IDF is a traditional method to represent text data based on how often a word appears in a document (term frequency) and how rare that word is across all documents (inverse document frequency).</p>
+                        <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}><strong>Term Frequency (TF):</strong> Measures how often a word appears in a single document. The more a word appears in a document, the higher its TF score.</p>
+                        <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}><strong>Inverse Document Frequency (IDF):</strong> Measures how unique or rare a word is across a collection of documents. If a word appears in many documents, its IDF score decreases. Common words like "the" or "and" are assigned lower importance because they appear in many documents, while rarer words are given higher importance.</p>
+
+                        <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}><strong>How TF-IDF Works:</strong></p>
+                        <ul>
+                            <li className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>It assigns a weight to each word based on its importance in the document and across the dataset.</li>
+                            <li className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>TF-IDF does not capture word meaning or relationships between words. It purely counts the importance of words based on their frequency.</li>
+                        </ul>
+                        <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}><strong>Example:</strong> In a set of articles, the word "NLP" might appear frequently in one specific document, but not in others. TF-IDF will give "NLP" a high score for that document, making it stand out as a significant keyword.</p>
+                    </li>
+
+                    <li>
+                        <h2 className="text-2xl p-6" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}>2. Word2Vec (Pretrained Model)</h2>
+                        <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>Word2Vec is the model we have used for this website to handle word and document similarity. Word2Vec is a neural network-based technique developed by Google that learns to represent words as continuous vectors, where similar words are closer in the vector space. Word2Vec captures the meaning of words based on their context in a sentence.</p>
+
+                        <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}><strong>Skip-gram Model:</strong> Predicts the surrounding words given a specific word. For example, given the word "cat," the model will try to predict words like "animal," "furry," or "pet" based on the context of "cat" in sentences.</p>
+
+                        <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}><strong>Continuous Bag of Words (CBOW):</strong> Predicts a word based on the surrounding words. For example, given the context "a cute _ ran across the street," the model will predict "cat" based on the surrounding words.</p>
+
+                        <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}><strong>How Word2Vec Works:</strong></p>
+                        <ul>
+                            <li className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>Word2Vec uses a large corpus of text to train and learn word associations. It generates vectors where words with similar meanings are close together in the vector space.</li>
+                            <li className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>It captures the semantics of words, unlike TF-IDF, which only considers word frequency.</li>
+                            <li className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>Pretrained Word2Vec models, like Google's model, are already trained on large datasets (e.g., Google News), and you can use these pretrained embeddings to represent words in your project.</li>
+                        </ul>
+                        <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}><strong>Example:</strong> In Word2Vec, words like "king" and "queen" will be close to each other in the vector space because they have similar meanings or roles in context. This relationship can also capture more complex patterns, such as "king" - "man" + "woman" ≈ "queen."</p>
+                    </li>
+
+                    <li>
+                        <h2 className="text-2xl p-6" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}>Key Differences</h2>
+                        <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}><strong>Word Relationships:</strong></p>
+                        <ul>
+                            <li className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}><strong>TF-IDF:</strong> Treats each word independently, with no understanding of word meaning or relationships.</li>
+                            <li className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}><strong>Word2Vec:</strong> Captures word relationships and similarities based on context.</li>
+                        </ul>
+
+                        <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}><strong>Type of Data Representation:</strong></p>
+                        <ul>
+                            <li className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}><strong>TF-IDF:</strong> Results in sparse vectors (large arrays with many zeros), as it only focuses on word counts in documents.</li>
+                            <li className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}><strong>Word2Vec:</strong> Results in dense vectors (compact, real-valued vectors), making it better for semantic understanding.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+            </div>
+        </div >
     );
 }
