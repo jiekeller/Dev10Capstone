@@ -78,6 +78,10 @@ export default function StoryForm() {
         }).then(res => {
             if (res.ok) {
                 navigate(`/stories`);
+            } else if (res.status === 400) {
+                return Promise.reject(
+                    ["Please ensure required fields are filled in: Title, Text, Category, and Author."]
+                )
             } else if (res.status === 403) {
                 // Log for now, we'll come back to this!
                 console.log(res);
@@ -91,7 +95,7 @@ export default function StoryForm() {
                 );
             }
         }).then(setErrors)
-        .catch(setErrors); // For now, just log any other types of errors
+            .catch(setErrors); // For now, just log any other types of errors
 
     }
 
@@ -119,6 +123,11 @@ export default function StoryForm() {
                     return Promise.reject(
                         ["Login Token expired, please log in again."]
                     )
+                } else if (res.status === 400) {
+                    return Promise.reject(
+                        ["Please ensure required fields are filled in: Title, Text, Category, and Author."]
+                    )
+
                 } else if (res.status === 404) {
                     // Log for now, we'll come back to this!
                     console.log('Story not found');
@@ -186,7 +195,7 @@ export default function StoryForm() {
                                 </label>
                                 <label className="ml-4">
                                     <input type="radio" id="poem" name="category" value="POEM" checked={story.category === 'POEM'} onChange={handleChange} />
-                                    Poem 
+                                    Poem
                                 </label>
                                 <label className="ml-4">
                                     <input type="radio" id="other" name="category" value="OTHER" checked={story.category === 'OTHER'} onChange={handleChange} />
