@@ -46,7 +46,7 @@ function Landing() {
         style={{ display: 'block', margin: '1px auto', maxWidth: '70%' }}
       />
       <p
-        className="text-xl p-4"
+        className="text-2xl p-4"
         style={{
           textAlign: 'left',
           fontFamily: 'Arial, sans-serif',
@@ -58,7 +58,7 @@ function Landing() {
         NLP has always been a fascinating area of CS for me. Not only can it be incredibly interesting to learn and mess around with, but it is also very important in the world today given its ability to make technology more accessible and efficient.
       </p>
       <p
-        className="text-xl p-4"
+        className="text-2xl p-4"
         style={{
           textAlign: 'left',
           fontFamily: 'Arial, sans-serif',
@@ -70,7 +70,7 @@ function Landing() {
         <strong>I have created this website to teach others the basics of natural language processing and why it can be so exciting (and also dangerous!).</strong>
       </p>
       <p
-        className="text-xl p-4"
+        className="text-2xl p-4"
         style={{
           textAlign: 'left',
           fontFamily: 'Arial, sans-serif',
@@ -100,7 +100,7 @@ function Landing() {
         Users and Admin can login using the green button on the top right, to add stories/authors (User and Admin privileges) or delete stories/authors (Only Admin privileges). If you would like to contribute to the site, please reach out to me <a href="mailto:">here</a>.
       </p>
       <p
-        className="text-3xl px-4 pt-10 pb-20"
+        className="text-2xl px-4 pt-10 pb-20"
         style={{
           textAlign: 'left',
           fontFamily: 'Arial, sans-serif',

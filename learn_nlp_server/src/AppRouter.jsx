@@ -15,6 +15,7 @@ import ConfirmDelete from "./views/ConfirmDelete";
 import Authors from "./views/Authors";
 import AuthorForm from "./components/AuthorForm";
 import ConfirmDeleteAuthor from "./components/ConfirmDeleteAuthor";
+import LearnMoreNLP from "./components/LearnMoreNLP";
 
 const LOCAL_STORAGE_TOKEN_KEY = "nlp_app_token";
 
@@ -28,32 +29,6 @@ function AppRouter() {
 
     // NEW: Define a useEffect hook callback function to attempt
     // to restore the user's token from localStorage
-    function refreshToken() {
-        if (localStorage.getItem("jwt")) {
-            refresh()
-                .then(setUser)
-                .catch(logout)
-                .finally(() => {
-                    setRestoreLoginAttemptCompleted(true);
-                    localStorage.getItem("jwt") &&
-                        setTimeout(refreshToken, timer);
-                });
-        } else {
-            setRestoreLoginAttemptCompleted(true);
-        }
-    }
-
-    useEffect(() => {
-        const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
-        if (token) {
-          login(token);
-        }
-        setRestoreLoginAttemptCompleted(true);
-      }, []);
-
-    useEffect(() => {
-        refreshToken();
-    }, []);
 
     const login = (token) => {
 
@@ -65,7 +40,7 @@ function AppRouter() {
 
         // Split the authorities string into an array of roles
         // Create the "user" object
-        const user = {
+        const u = {
             username,
             roles,
             token,
@@ -75,13 +50,13 @@ function AppRouter() {
         };
 
         // Log the user for debugging purposes
-        console.log(user);
+        console.log(u);
 
         // Update the user state
-        setUser(user);
+        setUser(u);
 
         // Return the user to the caller
-        return user;
+        return u;
     };
 
     const logout = () => {
@@ -89,8 +64,52 @@ function AppRouter() {
         localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
     };
 
+    async function refresh() {
+        const response = await fetch("http://localhost:8080/refresh_token", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY)}`,
+            },
+          });
+      
+          // This code executes if the request is successful
+          if (response.status === 200) {
+            const { jwt_token } = await response.json();
+            console.log(jwt_token);
+            // NEW: login!
+            login(jwt_token);
+          } else {
+            logout();
+          }
+        };
+
+
+    function refreshToken() {
+        if (localStorage.getItem("nlp_app_token")) {
+            refresh()
+                .finally(() => {
+                    setRestoreLoginAttemptCompleted(true);
+                    localStorage.getItem("nlp_app_token") &&
+                        setTimeout(refreshToken, timer);
+                });
+        } else {
+            setRestoreLoginAttemptCompleted(true);
+        }
+    }
+
+    useEffect(() => {
+        const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
+        setRestoreLoginAttemptCompleted(true);
+      }, []);
+
+    useEffect(() => {
+        refreshToken();
+    }, []);
+
+
     const auth = {
-        user: user ? { ...user } : null,
+        user,
         login,
         logout
     };
@@ -159,6 +178,10 @@ function AppRouter() {
                     path: "authors/delete/:id",
                     element: user ? <ConfirmDeleteAuthor /> : <Navigate to="/login" replace={true} />
 
+                },
+                {
+                    path: "/LearnMoreNLP",
+                    element: <LearnMoreNLP />
                 }
             ]
         }
