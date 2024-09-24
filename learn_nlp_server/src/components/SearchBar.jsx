@@ -3,7 +3,7 @@ import React from 'react';
 const SearchBar = ({ label, value, setValue }) => {
   return (
     <div className="flex items-center space-x-3">
-      {label && <label className="text-blue-600 font-semibold">{label}:</label>}
+      {label && <label className="text-blue-600 text-2xl font-semibold">{label}:</label>}
       <input
         type="text"
         value={value}
