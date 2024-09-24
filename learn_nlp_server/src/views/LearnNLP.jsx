@@ -58,7 +58,7 @@ export default function LearnNLP() {
             <h3 className="text-4xl px-6 pt-20" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}>A Deeper Dive</h3>
             <div className="" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', paddingBottom: '100px' }}>
                 <h1 className="text-2xl p-6" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}>Introduction to NLP: Word-to-Word Similarity</h1>
-                <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>Both TF-IDF and Word2Vec are methods used to represent words as numbers (vectors) for use in natural language processing tasks, but they work in different ways and serve different purposes.</p>
+                <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>Both TF-IDF and Word2Vec are methods used to represent words as numbers (back to step 1 of how text similarity works, this is called vectorization) for use in natural language processing tasks, but they work in different ways and serve different purposes.</p>
 
                 <ol>
                     <li>

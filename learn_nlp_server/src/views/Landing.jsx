@@ -19,29 +19,84 @@ function Landing() {
   checkSize();
 
   return (
-    <div>
-      <h1 className="text-5xl p-6" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}>
-      Learn Natural Language Processing!
-      </h1>
-      <p className="text-lg p-4" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', maxWidth: '60%', margin: '0 auto' }}>
-      Natural Language Processing <strong>(NLP)</strong> is a field of artificial intelligence that focuses on the interaction between humans and computers using natural language.
-      </p>
-      <p className="text-lg p-4" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', maxWidth: '60%', margin: '0 auto' }}>
-      NLP has always been a fascinating area of Computer Science for me. Not only can it be incredibly interesting to learn and mess around with, but it is also very important in the world today given its ability to make technology more accessible and efficient.
-      </p>
-      <p className="text-lg p-4" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', maxWidth: '60%', margin: '0 auto' }}>
-      I have created this website to teach others the basics of natural language processing and why it can be so exciting, and also so dangerous! 
-      </p>
-      <p className="text-lg p-4" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', maxWidth: '60%', margin: '0 auto' }}>
-      If you are new to NLP, checkout the LearnNLP page where you can learn foundational concepts of the field. Once you have an understanding, hop over to the ExploreNLP page to noodle around with different NLP tools (these will be explained in LearnNLP), or check out the Stories page to examine and compare famous documents or short stories to words and phrases.
-      </p>
-      <p className="text-lg p-4" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', maxWidth: '60%', margin: '0 auto' }}>
-      Users and Admin can login using the green button on the top right, to add stories and authors (User and Admin privileges) or delete stories and authors (Only Admin privileges). If you would like to contribute to the site, please reach out to me <a href="mailto:">here</a>.
-      </p>
-      <p className="text-lg p-4" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', maxWidth: '60%', margin: '0 auto' }}>
-      I hope you enjoy the site and learn something new about NLP!
-      </p>
-    </div>
+<div>
+  <h1 className="text-5xl p-6" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}>
+    Learn Natural Language Processing!
+  </h1>
+  <p
+    className="text-lg p-4"
+    style={{
+      textAlign: 'left',
+      fontFamily: 'Arial, sans-serif',
+      maxWidth: '60%',
+      margin: '0 auto',
+      lineHeight: '2.0' // Adjust line height for more vertical space
+    }}
+  >
+    Natural Language Processing <strong>(NLP)</strong> is a field of artificial intelligence that focuses on the interaction between humans and computers using natural language.
+  </p>
+  <p
+    className="text-lg p-4"
+    style={{
+      textAlign: 'left',
+      fontFamily: 'Arial, sans-serif',
+      maxWidth: '60%',
+      margin: '0 auto',
+      lineHeight: '2.0' // Adjust line height for more vertical space
+    }}
+  >
+    NLP has always been a fascinating area of Computer Science for me. Not only can it be incredibly interesting to learn and mess around with, but it is also very important in the world today given its ability to make technology more accessible and efficient.
+  </p>
+  <p
+    className="text-lg p-4"
+    style={{
+      textAlign: 'left',
+      fontFamily: 'Arial, sans-serif',
+      maxWidth: '60%',
+      margin: '0 auto',
+      lineHeight: '2.0' // Adjust line height for more vertical space
+    }}
+  >
+    I have created this website to teach others the basics of natural language processing and why it can be so exciting, and also so dangerous!
+  </p>
+  <p
+    className="text-lg p-4"
+    style={{
+      textAlign: 'left',
+      fontFamily: 'Arial, sans-serif',
+      maxWidth: '60%',
+      margin: '0 auto',
+      lineHeight: '2.0' // Adjust line height for more vertical space
+    }}
+  >
+    If you are new to NLP, checkout the LearnNLP page where you can learn foundational concepts of the field. Once you have an understanding, hop over to the ExploreNLP page to noodle around with different NLP tools (these will be explained in LearnNLP), or check out the Stories page to examine and compare famous documents or short stories to words and phrases.
+  </p>
+  <p
+    className="text-lg p-4"
+    style={{
+      textAlign: 'left',
+      fontFamily: 'Arial, sans-serif',
+      maxWidth: '60%',
+      margin: '0 auto',
+      lineHeight: '2.0' // Adjust line height for more vertical space
+    }}
+  >
+    Users and Admin can login using the green button on the top right, to add stories and authors (User and Admin privileges) or delete stories and authors (Only Admin privileges). If you would like to contribute to the site, please reach out to me <a href="mailto:">here</a>.
+  </p>
+  <p
+    className="text-lg p-4"
+    style={{
+      textAlign: 'left',
+      fontFamily: 'Arial, sans-serif',
+      maxWidth: '60%',
+      margin: '0 auto',
+      lineHeight: '2.0' // Adjust line height for more vertical space
+    }}
+  >
+    I hope you enjoy the site and learn something new about NLP!
+  </p>
+</div>
+
   );
 }
 
