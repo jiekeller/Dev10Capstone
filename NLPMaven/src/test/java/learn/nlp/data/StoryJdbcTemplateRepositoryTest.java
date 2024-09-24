@@ -60,8 +60,8 @@ public class StoryJdbcTemplateRepositoryTest {
     void shouldFindById() throws DataAccessException {
         Story story = repository.findById(1);
         assertNotNull(story);
-        assertEquals(1, story.getId());
-        assertEquals("Steelheart", story.getTitle());
+        System.out.println(story);
+        assertEquals(Category.POEM, story.getCategory());
     }
 
     @Test

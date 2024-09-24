@@ -78,10 +78,12 @@ export default function StoryForm() {
         }).then(res => {
             if (res.ok) {
                 navigate(`/stories`);
-            } else if (res.status === 400) {
+            } else if (res.status === 403) {
                 // Log for now, we'll come back to this!
                 console.log(res);
-                return res.json();
+                return Promise.reject(
+                    ["Login Token expired, please log in again."]
+                )
             } else {
                 //If the response code is anything else, reject promise and throw code execution to .catch()
                 return Promise.reject(
@@ -111,19 +113,22 @@ export default function StoryForm() {
             .then(res => {
                 if (res.ok) {
                     navigate(`/stories`);
-                } else if (res.status === 400) {
+                } else if (res.status === 403) {
                     // Log for now, we'll come back to this!
                     console.log(res);
+                    return Promise.reject(
+                        ["Login Token expired, please log in again."]
+                    )
                 } else if (res.status === 404) {
                     // Log for now, we'll come back to this!
                     console.log('Story not found');
                 } else {
                     // Any other status code is unexpected and thrown to .catch()
                     return Promise.reject(
-                        new Error(`Unexpected status code: ${res.status}`)
+                        ["Unexpected response code: " + res.status]
                     );
                 }
-            })
+            }).then(setErrors)
             .catch(console.error); // For now, just log unexpected errors
     }
 
@@ -178,6 +183,14 @@ export default function StoryForm() {
                                 <label className="ml-4">
                                     <input type="radio" id="shortStory" name="category" value="SHORT_STORY" checked={story.category === 'SHORT_STORY'} onChange={handleChange} />
                                     Short Story
+                                </label>
+                                <label className="ml-4">
+                                    <input type="radio" id="poem" name="category" value="POEM" checked={story.category === 'POEM'} onChange={handleChange} />
+                                    Poem 
+                                </label>
+                                <label className="ml-4">
+                                    <input type="radio" id="other" name="category" value="OTHER" checked={story.category === 'OTHER'} onChange={handleChange} />
+                                    Other
                                 </label>
                             </div>
                         </div>

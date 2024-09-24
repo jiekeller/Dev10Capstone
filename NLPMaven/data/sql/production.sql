@@ -71,7 +71,9 @@ insert into author (`name`) values
 
 insert into category (`type`) values
 	('Document'),
-    ('Short Story');
+    ('Short Story'),
+    ('Poem'),
+    ('Other');
 
 insert into app_role (`name`) values
     ('USER'),

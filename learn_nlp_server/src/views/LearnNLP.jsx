@@ -22,11 +22,11 @@ export default function LearnNLP() {
                     style={{ display: 'block', margin: '5px auto', maxWidth: '90%' }}
                 />
                 <li className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}><strong>Measuring Distance</strong>: After the words are turned into numbers, the computer looks at how "close" these numbers are. If the numbers for "cat" and "kitten" are close together, it knows the words are related. If the numbers are far apart, like between "cat" and "car," it knows they aren’t related.</li>
-
-                <li className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}><strong>Comparing Sentences</strong>: The same thing happens with sentences. The computer changes each sentence into numbers and then checks how similar the sets of numbers are to each other. For example, “The sky is blue” is close to “The sky looks clear,” but very different from “The car is red.”</li>
             </ol>
+            <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>Turning <strong>Sentences</strong> into Numbers: The same thing happens with sentences. The computer changes each sentence into numbers and then checks how similar the sets of numbers are to each other. For example, “The sky is blue” is close to “The sky looks clear,” but very different from “The car is red.”</p>
 
-            <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>In short, the computer uses numbers and distances to decide if words or sentences are similar. It’s like how we know that "big" and "large" mean almost the same thing, but we have to teach the computer that by giving it lots of examples!</p>
+
+            <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', fontWeight: 'bold', maxWidth: '75%', margin: '0 auto' }}>In short, the computer uses numbers and distances to decide if words or sentences are similar. It’s like how we know that "big" and "large" mean almost the same thing, but we have to teach the computer that by giving it lots of examples!</p>
             <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', maxWidth: '75%', margin: '0 auto' }}>We can use this process to compare words, sentences and even find the 'closest words' to a given term.</p>
 
             <h2 className="text-2xl p-6" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}>What are Named Entity Recognition and Sentiment Analysis?</h2>

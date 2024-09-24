@@ -28,10 +28,14 @@ create table app_user_role (
         primary key (app_user_id, app_role_id),
     constraint fk_app_user_role_user_id
         foreign key (app_user_id)
-        references app_user(app_user_id),
+        references app_user(app_user_id)
+            on delete cascade
+			on update cascade, 
     constraint fk_app_user_role_role_id
         foreign key (app_role_id)
         references app_role(app_role_id)
+            on delete cascade
+			on update cascade
 );
 
 create table category (
@@ -68,9 +72,9 @@ create table story (
 delimiter //
 create procedure set_known_good_state()
 begin
+	delete from story;
     delete from author;
 	delete from category;
-	delete from story;
     delete from app_role;
     delete from app_user;
     delete from app_user_role;
@@ -85,11 +89,13 @@ begin
 		('The Founding Fathers');
 
 	insert into category (`type`) values
-		('Document'),
-		('Short Story');
+		('DOCUMENT'),
+		('SHORT_STORY'),
+		('POEM'),
+		('OTHER');
         
 	insert into story (title, author_id, `text`, cat_id) values
-		('Steelheart', 1, 'This was a book about steel, and his name was heart', 1);
+		('Steelheart', 1, 'This was a book about steel, and his name was heart', 3);
 
 	insert into app_role (`name`) values
 		('USER'),
