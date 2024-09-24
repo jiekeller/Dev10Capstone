@@ -8,6 +8,7 @@ export default function ExploreNLP() {
     const ComponentA = () => {
         const [word1, setWord1] = useState('');
         const [word2, setWord2] = useState('');
+        const [loading, setLoading] = useState(true);
         return (
             <div>
                 <div style={{ textAlign: 'center', marginTop: '20px', marginBottom: '20px' }}>
@@ -24,7 +25,7 @@ export default function ExploreNLP() {
                         <button className="btn btn-outline btn-info"
                             onMouseOver={(e) => e.target.style.backgroundColor = 'lightblue'}
                             onMouseOut={(e) => e.target.style.backgroundColor = '#f0f0f0'}
-                            onClick={(e) => handleCompare(word1, word2, e)}>
+                            onClick={(e) => handleCompare(word1, word2, e, loading, setLoading)}>
                             Compare
                         </button>
                     </div>
@@ -41,6 +42,7 @@ export default function ExploreNLP() {
     const ComponentB = () => {
         const [word, setWord] = useState('');
         const [numWords, setNumWords] = useState('');
+        const [loading, setLoading] = useState(true);
         return (
             <div>
                 <div style={{ textAlign: 'center', marginTop: '20px', marginBottom: '20px' }}>
@@ -57,7 +59,7 @@ export default function ExploreNLP() {
                         <button className="btn btn-outline btn-info"
                             onMouseOver={(e) => e.target.style.backgroundColor = 'lightblue'}
                             onMouseOut={(e) => e.target.style.backgroundColor = '#f0f0f0'}
-                            onClick={(e) => handleClosest(word, numWords, e)}>
+                            onClick={(e) => handleClosest(word, numWords, e, loading, setLoading)}>
                             Examine
                         </button>
                     </div>
@@ -72,6 +74,8 @@ export default function ExploreNLP() {
     const ComponentC = () => {
         const [sentence, setSentence] = useState('');
         const [sentiment, setSentiment] = useState('');
+        const [loading1, setLoading1] = useState(true);
+
 
         return (
             <div>
@@ -85,7 +89,7 @@ export default function ExploreNLP() {
                         <button className="btn btn-outline btn-info"
                             onMouseOver={(e) => e.target.style.backgroundColor = 'lightblue'}
                             onMouseOut={(e) => e.target.style.backgroundColor = '#f0f0f0'}
-                            onClick={(e) => handleSentiment(sentence, sentiment, e)}>
+                            onClick={(e) => handleSentiment(sentence, sentiment, e, loading1, setLoading1)}>
                             Analyze
                         </button>
                     </div>
@@ -101,6 +105,7 @@ export default function ExploreNLP() {
 
     const ComponentD = () => {
         const [sentence, setSentence] = useState('');
+        const [loading, setLoading] = useState(true);
 
         return (
             <div>
@@ -114,7 +119,7 @@ export default function ExploreNLP() {
                         <button className="btn btn-outline btn-info"
                             onMouseOver={(e) => e.target.style.backgroundColor = 'lightblue'}
                             onMouseOut={(e) => e.target.style.backgroundColor = '#f0f0f0'}
-                            onClick={(e) => handleNER(sentence, e)}>
+                            onClick={(e) => handleNER(sentence, e, loading, setLoading)}>
                             Recognize
                         </button>
                     </div>
@@ -135,7 +140,7 @@ export default function ExploreNLP() {
 
 
 
-    function handleCompare(word1, word2, event) {
+    function handleCompare(word1, word2, event, loading, setLoading) {
         if (!word1 || !word2) {
             alert('Please enter two words to compare.');
             return;
@@ -154,15 +159,19 @@ export default function ExploreNLP() {
             .then(data => {
                 console.log('Success:', data);
                 let roundedData = data.toFixed(4)
+                setLoading(false);
                 result.textContent = `Result: ${roundedData}`;
             })
             .catch((error) => {
                 console.error('Error:', error);
                 result.textContent = 'An error occurred while comparing the words.';
             });
+        if (loading) {
+            result.textContent = `Result: Loading...`;
+        };
     }
 
-    function handleClosest(word, n, event) {
+    function handleClosest(word, n, event, loading, setLoading) {
         if (!word || !numWords) {
             alert('Please enter a word and number of closest words to find.');
             return;
@@ -180,15 +189,20 @@ export default function ExploreNLP() {
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
+                setLoading(false);
                 result.textContent = `Result: ${data.join(', ')}`;
             })
             .catch((error) => {
                 console.error('Error:', error);
                 result.textContent = 'An error occurred while finding the closest words.';
             });
+
+        if (loading) {
+            result.textContent = `Result: Loading...`;
+        }
     }
 
-    function handleSentiment(text, sentiment, event) {
+    function handleSentiment(text, sentiment, event, loading1, setLoading1) {
         console.log(text);
         if (!text) {
             alert('Please enter a sentence to analyze.');
@@ -207,15 +221,20 @@ export default function ExploreNLP() {
             .then(response => response.text())
             .then(data => {
                 console.log('Success:', data);
+                setLoading1(false);
                 result.textContent = `Result: ${data}`;
             })
             .catch((error) => {
                 console.error('Error:', error);
                 result.textContent = 'An error occurred while analyzing the sentiment.';
             });
+
+        if (loading1) {
+            result.textContent = `Result: Loading...`;
+        }
     }
 
-    function handleNER(text, event) {
+    function handleNER(text, event, loading, setLoading) {
         if (!text) {
             alert('Please enter a sentence to analyze.');
             return;
@@ -233,6 +252,7 @@ export default function ExploreNLP() {
             .then(response => response.text())
             .then(data => {
                 console.log('Success:', data);
+                setLoading(false);
                 result.textContent = `Result: ${data}`;
             })
             .catch((error) => {
@@ -240,6 +260,9 @@ export default function ExploreNLP() {
                 result.textContent = 'An error occurred while recognizing named entities.';
             }
             );
+        if (loading) {
+            result.textContent = `Result: Loading...`;
+        }
     }
 
 
