@@ -137,7 +137,7 @@ export default function ExploreNLP() {
 
     const [visibleComponent, setVisibleComponent] = useState('ComponentA');
 
-    const [visibleClarification, setVisibleClarification] = useState('ComponentA');
+    // const [visibleClarification, setVisibleClarification] = useState('ComponentA');
 
 
 
@@ -270,12 +270,12 @@ export default function ExploreNLP() {
     function handleClarification() {
         const currentComponent = visibleComponent;
         if (currentComponent === 'ComponentA') {
-            alert('This tool calculates the similarity between two words. Enter two words and click "Compare" to see the result.');
+            alert('This tool calculates the similarity between two words. Our model has been trained on a large corpus of text, try words that stretch the model, perhaps revealing some gender or racial bias. ');
         } else if (currentComponent === 'ComponentB') {
             alert('This tool finds the N closest words to a given word. Enter a word and the number of closest words to find, then click "Examine" to see the result.');
         }
         else if (currentComponent === 'ComponentC') {
-            alert('This tool analyzes the sentiment of a sentence. Enter a sentence and click "Analyze" to see the result.');
+            alert('This tool analyzes the sentiment and emotion of a sentence. Enter a sentence and click "Analyze" to see the result.');
         }
         else if (currentComponent === 'ComponentD') {
             alert('This tool recognizes named entities in a sentence. Enter a sentence and click "Recognize" to see the result.');
