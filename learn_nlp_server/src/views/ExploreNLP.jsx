@@ -137,6 +137,8 @@ export default function ExploreNLP() {
 
     const [visibleComponent, setVisibleComponent] = useState('ComponentA');
 
+    const [visibleClarification, setVisibleClarification] = useState('ComponentA');
+
 
 
 
@@ -265,12 +267,35 @@ export default function ExploreNLP() {
         }
     }
 
+    function handleClarification() {
+        const currentComponent = visibleComponent;
+        if (currentComponent === 'ComponentA') {
+            alert('This tool calculates the similarity between two words. Enter two words and click "Compare" to see the result.');
+        } else if (currentComponent === 'ComponentB') {
+            alert('This tool finds the N closest words to a given word. Enter a word and the number of closest words to find, then click "Examine" to see the result.');
+        }
+        else if (currentComponent === 'ComponentC') {
+            alert('This tool analyzes the sentiment of a sentence. Enter a sentence and click "Analyze" to see the result.');
+        }
+        else if (currentComponent === 'ComponentD') {
+            alert('This tool recognizes named entities in a sentence. Enter a sentence and click "Recognize" to see the result.');
+        }
+    }
+
 
     return (
         <div className="text-center">
             <h1 className="text-5xl p-6">
                 Let's Explore some NLP Tools!
             </h1>
+            <section className="fixed top-10 left-1 flex flex-col mt-10">
+                <img
+                    src='src\assets\clarification.png'
+                    alt="Word Vectorization"
+                    onClick={() => handleClarification()}
+                    style={{ display: 'block', maxWidth: '8%' }}
+                />
+            </section>
             <div className="flex space-x-6 justify-center">
                 <button className="btn bg-blue-900 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 transition duration-300 btn-sm"
                     onClick={() => setVisibleComponent('ComponentA')}>
