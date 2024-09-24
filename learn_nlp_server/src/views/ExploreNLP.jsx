@@ -318,16 +318,7 @@ export default function ExploreNLP() {
             {visibleComponent === 'ComponentB' && <ComponentB />}
             {visibleComponent === 'ComponentC' && <ComponentC />}
             {visibleComponent === 'ComponentD' && <ComponentD />}
-
+            <p className="text-center text-sm mt-10 text-gray-500">Click the magnifying glass for more information on each tool.</p>
         </div>
     );
 }
-
-// turn it into a form -> submit button. evt stores information.
-// form ? references get me text from word1 word2 ref
-// usesTate
-// when set state to be new text
-// useState word1input give state, onChange, update state , console log everything with the useState onChange. udate state
-// whenc ompare, check values at that time
-//<label> Input 1: <input type="text" value={input1} onChange={(e) => setInput1(e.target.value)} /> </label>
-// write a little bit about letting users explore bias
