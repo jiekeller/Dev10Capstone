@@ -61,6 +61,8 @@ export default function LearnNLP() {
 
                 <h2 className="text-2xl p-6" style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}>What are Named Entity Recognition and Sentiment Analysis?</h2>
 
+                <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', margin: '0 auto' }}>Many tools use pretrained models that have learned from large datasets to recognize patterns and nuances in language.</p>
+
                 <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', margin: '0 auto' }}><strong>Named Entity Recognition (NER)</strong> is a process in NLP where a model identifies and classifies named entities—such as people, organizations, locations, dates, and more—in a given text. For example, in the sentence "Apple Inc. was founded by Steve Jobs in California," NER would classify "Apple Inc." as an organization, "Steve Jobs" as a person, and "California" as a location. </p>
 
                 <p className="text-xl p-4" style={{ textAlign: 'left', fontFamily: 'Arial, sans-serif', margin: '0 auto' }}><strong>Sentiment Analysis</strong> is another NLP tool where a model determines the emotional tone or attitude expressed in a text. It categorizes the sentiment as positive, negative, or neutral by analyzing words and phrases. For example, in "This movie was fantastic!" the sentiment would be classified as positive, while in "The service was terrible," it would be negative. </p>

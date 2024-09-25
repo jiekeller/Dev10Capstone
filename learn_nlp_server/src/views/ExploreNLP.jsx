@@ -270,7 +270,7 @@ export default function ExploreNLP() {
     function handleClarification() {
         const currentComponent = visibleComponent;
         if (currentComponent === 'ComponentA') {
-            alert('This tool calculates the similarity between two words. Our model has been trained on a large corpus of text, try words that stretch the model, perhaps revealing some gender or racial bias. ');
+            alert('This tool calculates the similarity between two words. Our model has been trained on a large corpus of Google News text, try words that stretch the model, perhaps revealing some gender or racial bias. ');
         } else if (currentComponent === 'ComponentB') {
             alert('This tool finds the N closest words to a given word. Enter a word and the number of closest words to find, then click "Examine" to see the result.');
         }
