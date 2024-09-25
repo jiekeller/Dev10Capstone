@@ -63,7 +63,8 @@ export default function AuthorForm() {
                         </div>
                         <div className="mt-5">
                             <label className="pr-10" htmlFor="description">Description</label>
-                            <input className="input input-bordered w-1/2" type="text" id="description" name="description" value={author.description} onChange={handleChange} />
+                            <input className="input input-bordered w-1/2" type="text" id="description" name="description" value={author.description} onChange={handleChange} 
+                            maxlength="255" />
                         </div>
                         <div className="p-6">
                             <button className="btn bg-blue-600 text-white hover:bg-blue-900 transition duration-300" type="submit">Add</button>

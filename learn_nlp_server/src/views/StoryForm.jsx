@@ -206,7 +206,7 @@ export default function StoryForm() {
                         <div>
                             <label className="pr-10" htmlFor="description">Description</label>
                             <textarea className="w-full h-16 p-2 m-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                id="description" name="description" value={story.description} onChange={handleChange} />
+                                id="description" name="description" value={story.description} onChange={handleChange} maxlength="255"/>
                         </div>
                         <div>
                             <label className="pr-10" htmlFor="publishedDate">Published Date</label>
