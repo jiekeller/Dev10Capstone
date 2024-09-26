@@ -38,13 +38,15 @@ export default function Authors() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
                     {authors?.map(author => (
                         <div key={author.id} className="col">
-                            <div className="card bg-blue-50 shadow-lg hover:shadow-xl h-full">
-                                <div className="card-body">
-                                    <h5 className="card-title text-blue-600 font-bold">{author.name}</h5>
+                            <div className="card shadow-lg hover:shadow-xl h-full">
+                                <div className="card-body text-center">
+                                    <h5 className="card-title justify-center text-blue-600 font-bold">{author.name}</h5>
                                     <p className="card-text text-blue-400">{author.description}</p>
+                                    <div className="flex justify-center">
                                     {canDelete && (
-                                        <Link state={author} to={`/authors/delete/${author.id}`} className="btn bg-purple-400 text-white btn-sm hover:bg-purple-600 transition duration-300">Delete</Link>
+                                        <Link state={author} to={`/authors/delete/${author.id}`} className="btn btn-sm justify-center items-center text-center max-w-sm bg-purple-400 text-white btn-sm hover:bg-purple-600 transition duration-300">Delete</Link>
                                     )}
+                                    </div>
                                 </div>
                             </div>
                         </div>
