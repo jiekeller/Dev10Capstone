@@ -38,7 +38,7 @@ function Landing() {
           lineHeight: '2.0' // Adjust line height for more vertical space
         }}
       >
-        Natural Language Processing <strong>(NLP)</strong> is a field of artificial intelligence that focuses on the interaction between humans and computers using natural language, bringing together Computer Science (CS) and Linguistics.
+        Natural Language Processing <strong>(NLP)</strong> is a field of artificial intelligence and machine learning that focuses on the interaction between humans and computers using natural language, bringing together Computer Science (CS) and Linguistics.
       </p>
       <img
         src='src\assets\landing.png'
