@@ -78,7 +78,7 @@ export default function StoryForm() {
         }).then(res => {
             if (res.ok) {
                 navigate(`/stories`);
-            } else if (res.status === 400) {
+            } else if (res.status === 400 || res.status === 500) {
                 return Promise.reject(
                     ["Please ensure required fields are filled in: Title, Text, Category, and Author."]
                 )
