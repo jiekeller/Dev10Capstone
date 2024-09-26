@@ -123,7 +123,7 @@ export default function StoryForm() {
                     return Promise.reject(
                         ["Login Token expired, please log in again."]
                     )
-                } else if (res.status === 400) {
+                } else if (res.status === 400 || res.status === 500) {
                     return Promise.reject(
                         ["Please ensure required fields are filled in: Title, Text, Category, and Author."]
                     )
