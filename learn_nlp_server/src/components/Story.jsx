@@ -56,9 +56,23 @@ export default function Story() {
 
             <h3 className="text-5xl p-6">{newStory.title}</h3>
             <h2 className="text-xl p-2">By: {newStory.author.name}</h2>
-            <p>{newStory.description}</p>
+            <p className="text-md p-4"
+        style={{
+          textAlign: 'center',
+          fontFamily: 'Arial, sans-serif',
+          maxWidth: '60%',
+          margin: '0 auto',
+          lineHeight: '2.0' // Adjust line height for more vertical space
+        }}>{newStory.description}</p>
             <div>
-                <p className="text-xl p-6 px-20">{newStory.text}</p>
+                <p className="text-2xl p-4"
+        style={{
+          textAlign: 'left',
+          fontFamily: 'Arial, sans-serif',
+          maxWidth: '80%',
+          margin: '0 auto',
+          lineHeight: '2.0' // Adjust line height for more vertical space
+        }}>{newStory.text}</p>
             </div>
         </div>
     )
